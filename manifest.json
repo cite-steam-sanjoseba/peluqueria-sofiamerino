@@ -1,0 +1,22 @@
+{
+  "name": "Salón Sofía",
+  "short_name": "Salón Sofía",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#D90429",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/rF0s8QkX/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/rF0s8QkX/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
