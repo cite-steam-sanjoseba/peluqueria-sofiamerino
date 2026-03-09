@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="author" content="Sofía Merino Tena" />
+  <meta name="description" content="App de Peluquería Salón Sofía. Proyecto CITE-STEAM IA, FP y robótica inclusiva. Coord: Cristina Ramos." />
+  <title>Salón Sofía</title>
+  
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#D90429" />
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/rF0s8QkX/logo.png" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f8f9fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    iframe {
+      border: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+
+    #install-prompt {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      color: #1A1A1A;
+      box-shadow: 0 -4px 25px rgba(0,0,0,0.2);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      padding: 30px 20px 25px 20px;
+      box-sizing: border-box;
+      transform: translateY(110%);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #install-prompt.show {
+      transform: translateY(0);
+    }
+
+    .install-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .install-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: #D90429;
+    }
+
+    .install-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      padding: 0 10px;
+    }
+
+    .install-safe {
+      font-size: 0.85rem;
+      color: #666;
+      background: rgba(217, 4, 41, 0.1);
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .install-btn {
+      background-color: #D90429;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 320px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(217, 4, 41, 0.3);
+      transition: background-color 0.3s;
+    }
+
+    .install-btn:hover {
+      background-color: #b00322;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WebApp de Apps Script (AQUÍ DEBES PEGAR TU URL NUEVA) -->
+  <iframe
+    src="https://script.google.com/macros/s/AQUI_PEGAS_EL_NUEVO_ENLACE_EJECUTABLE_DE_APPS_SCRIPT/exec"
+    allow="camera; microphone; geolocation">
+  </iframe>
+
+  <!-- Aviso de Instalación PWA -->
+  <div id="install-prompt">
+    <img src="https://i.postimg.cc/rF0s8QkX/logo.png" alt="Icono Salón Sofía" class="install-icon" />
+    <div class="install-title">Lleva el salón en tu bolsillo</div>
+    <div class="install-text">
+      Para una experiencia rápida, pulsa en las opciones de tu navegador (o compartir) y selecciona <strong>"Añadir a la pantalla de inicio"</strong>.
+    </div>
+    <div class="install-safe">
+      <span style="font-size: 1.5rem;">📱</span>
+      <span>Es un acceso directo 100% seguro. No requiere instalación real, no ocupa memoria ni recopila tus datos personales.</span>
+    </div>
+    <button class="install-btn" onclick="closePrompt()">Entendido, cerrar aviso</button>
+  </div>
+
+  <script>
+    // Registro del Service Worker para la PWA
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(err => console.log("Error SW", err));
+      });
+    }
+
+    // Función para cerrar el aviso
+    function closePrompt() {
+      document.getElementById("install-prompt").classList.remove("show");
+    }
+
+    // Mostrar el aviso solo si NO está instalada (no es standalone)
+    window.addEventListener("load", () => {
+      const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+      
+      if (!isStandalone) {
+        // Muestra el aviso a los 2 segundos de entrar
+        setTimeout(() => document.getElementById("install-prompt").classList.add("show"), 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>
