@@ -1,4 +1,5 @@
-✂️ PWA: Peluquería Sofía Merino
+✂️ PWA: Peluquería Sofía Merino.
+
 Esta Aplicación Web Progresiva (PWA) es un sistema inteligente de gestión de citas, servicios y stock para una peluquería. Su uso es educativo: los datos que se manejan son ficticios (nombre y teléfon de clientes).
 
 🎓 Créditos y Autoría Institucional
