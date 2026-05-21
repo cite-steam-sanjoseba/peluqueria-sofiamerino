@@ -2,6 +2,8 @@
 
 Esta Aplicación Web Progresiva (PWA) es un sistema inteligente de gestión de citas, servicios y stock para una peluquería. Su uso es educativo: los datos que se manejan son ficticios (nombre y teléfon de clientes).
 
+# ENLACE: https://cite-steam-sanjoseba.github.io/peluqueria-sofiamerino/
+
 🎓 Créditos y Autoría Institucional
 Este proyecto ha sido desarrollado en el marco del programa de innovación educativa "CITE-STEAM IA, FP y robótica inclusiva" del IES San José (Badajoz).
 
